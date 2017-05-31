@@ -4,9 +4,17 @@
           <li><%= error %></li>
       <% end %>
     </ul>
-    <b> <%= f.label :title, 'Name your article' %></b> <br>
-    <%= f.text_field :title %> <br> <br>
-    <b><%= f.label :body, 'Describe your article' %></b> <br>
-    <%= f.text_area :body %> <br> <br>
+    <p>
+      <%= f.label :tag_list %><br/>
+      <%= f.text_field :tag_list %>
+    </p>
+    <p>
+      <b> <%= f.label :title, 'Name your article' %></b> <br>
+      <%= f.text_field :title %> <br> <br>
+    </p>
+    <p>
+      <b><%= f.label :body, 'Describe your article' %></b> <br>
+      <%= f.text_area :body %> <br> <br>
+    </p>
     <%= f.submit %>
 <% end %>
