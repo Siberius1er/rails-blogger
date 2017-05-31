@@ -1,10 +1,19 @@
 class CommentsController < ApplicationController
+
   def create
     @comment = Comment.new(comment_params)
     @comment.article_id = params[:article_id]
-
     @comment.save
+    redirect_to article_path(@comment.article)
+  end
 
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id]).destroy
+    flash.notice = "Comment Deleted"
     redirect_to article_path(@comment.article)
   end
 

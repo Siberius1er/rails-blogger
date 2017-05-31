@@ -1,11 +1,27 @@
 <h1>Article</h1>
-
+<p>
+  Tags:
+  <% @article.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
 <%= @article.title %> <br>
-<%= @article.body %> <br> <br>
-<%= link_to 'Update', edit_article_path(@article) %><br>
-<%= link_to 'Destroy', article_path(@article), method: :delete, data: {confirm: 'Really delete the article?'} %> <br>
-<%= link_to 'Return to the list', articles_path %>
 
+<%= @article.body %> <br> <br>
+<ul id="article">
+  <li>
+    <%= link_to 'Update', edit_article_path(@article) %>
+  </li>
+  <li>
+    <%= link_to 'Destroy', article_path(@article), method: :delete, data: {confirm: 'Really delete the article?'} %>
+  </li>
+  <li>
+    <%= link_to 'Return to the  article list', articles_path %>
+  </li>
+  <li>
+    <%= link_to 'Return to the Tag list', tags_path %>
+  </li>
+</ul>
 <%= render partial: 'comments/form' %>
 
 <h3>Comments (<%= @article.comments.size %>)</h3>
