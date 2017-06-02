@@ -7,12 +7,14 @@
 </ul>
 
 <ul>
-  <li>
-    <%= link_to 'rename the tag', edit_tag_path(@tag) %>
-  </li>
-  <li>
-    <%= link_to 'destroy a  the  tag', tag_path(@tag), method: :delete, data: {confirm: 'Really delete the tag ?'} %>
-  </li>
+  <% if logged_in? %>
+      <li>
+        <%= link_to 'rename the tag', edit_tag_path(@tag) %>
+      </li>
+      <li>
+        <%= link_to 'destroy a  the  tag', tag_path(@tag), method: :delete, data: {confirm: 'Really delete the tag ?'} %>
+      </li>
+  <% end %>
   <li>
     <%= link_to 'Return to the  article list', articles_path %>
   </li>

@@ -11,16 +11,22 @@
 
   <% end %>
 </p>
-<%= @article.title %> <br>
+Title:<%= @article.title %> <br>
 
-<%= @article.body %> <br> <br>
+Body: <%= @article.body %> <br> <br>
+
+Author: <%= @article.creator %>
 <ul id="article">
-  <li>
-    <%= link_to 'Update', edit_article_path(@article) %>
-  </li>
-  <li>
-    <%= link_to 'Destroy', article_path(@article), method: :delete, data: {confirm: 'Really delete the article?'} %>
-  </li>
+  <% if logged_in? %>
+      <% if @article.creator == current_user.username %>
+          <li>
+            <%= link_to 'Update', edit_article_path(@article) %>
+          </li>
+          <li>
+            <%= link_to 'Destroy', article_path(@article), method: :delete, data: {confirm: 'Really delete the article?'} %>
+          </li>
+      <% end %>
+  <% end %>
   <li>
     <%= link_to 'Return to the  article list', articles_path %>
   </li>
@@ -28,7 +34,9 @@
     <%= link_to 'Return to the Tag list', tags_path %>
   </li>
 </ul>
-<%= render partial: 'comments/form' %>
+<% if logged_in? %>
+    <%= render partial: 'comments/form' %>
+<% end %>
 
 <h3>Comments (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
