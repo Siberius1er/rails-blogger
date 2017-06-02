@@ -1,9 +1,11 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
+  before_action :require_login, except: [:index, :show]
 
   def index
     @articles = Article.all
   end
+
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
@@ -17,7 +19,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    @article.creator = current_user.username
     @article.save
     redirect_to article_path(@article)
   end

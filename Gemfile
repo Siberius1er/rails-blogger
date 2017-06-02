@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_passwordbin/rails generate migration add_paperclip_fields_to_article
 # gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
+gem 'sorcery'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

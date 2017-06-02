@@ -16,7 +16,7 @@
       <% if @article.image.exists? %>
           <%= image_tag @article.image.url %><br/>
       <% end %>
-      <%= f.label :image, "Attach a New Image" %><br />
+      <%= f.label :image, 'Attach a New Image' %><br/>
       <%= f.file_field :image %>
     </p>
     <p>
@@ -25,3 +25,4 @@
     </p>
     <%= f.submit %>
 <% end %>
+<%= link_to 'Back', articles_path %>
